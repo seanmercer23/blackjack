@@ -10,7 +10,6 @@ const stayButton = document.querySelector('#stay')
 const dealer = document.querySelector('#dealer')
 const player = document.querySelector('#player')
 
-
 const buildDeck = function() {
     for(let i = 0; i < values.length; i++) {
       for (let j = 0; j < suits.length; j++) {
@@ -42,11 +41,7 @@ const dealCardsToPlayers = function() {
       dealer.appendChild(faceDownCard)
       blackjack()
   }
-  console.log(playerHand)
-  console.log(dealerHand)
 }
-
-dealButton.addEventListener('click', dealCardsToPlayers)
 
  const handValue = function(hand) {
    let total = 0
@@ -57,12 +52,12 @@ dealButton.addEventListener('click', dealCardsToPlayers)
   }
   
   const blackjack = function () {
-    if (handValue(dealerHand) === 21 && handValue(playerHand) === 21) {
-      console.log("It's a push!")
+    if (handValue(dealerHand) === 21) {
+      alert("It's a push!")
     } else if (handValue(playerHand) === 21) {
-      console.log("Blackjack! Player wins!")
+      alert("Blackjack! Player wins!")
     } else if (handValue(dealerHand) === 21) {
-      console.log("Blackjack! House wins!")
+      alert("Blackjack! House wins!")
     }
   }
 
@@ -74,39 +69,29 @@ const dealerHit = function () {
     for (let i = dealerHand.length -1; i < dealerHand.length; i++) {
       let faceDownCard = document.createElement('img')
       faceDownCard.setAttribute('src', 'CSS/Assets/card_back_red.png')
-      faceDownCard.setAttribute('class', 'playerCards')
+      faceDownCard.setAttribute('class', 'dealerCards')
       dealer.appendChild(faceDownCard)
     }
+    blackjack()
+    bust()
 }
-
-hitButton.addEventListener('click', function() {
-  let dealtCard = Math.floor(Math.random() * deck.length)
-  let card = deck[dealtCard]
-  playerHand.push(card)
-  deck.splice(dealtCard, 1)
-  for (let i = playerHand.length - 1; i < playerHand.length; i++) {
-    let faceUpCard = document.createElement('img')
-    faceUpCard.setAttribute('src', playerHand[i - 1].Image)
-    faceUpCard.setAttribute('class', 'playerCards')
-    player.appendChild(faceUpCard)
-  }
-  blackjack()
-  bust()
-})
 
 const bust = function() {
   if (handValue(playerHand) > 21) {
-    console.log("Player Busts! House Wins!") 
+    alert("Player Busts! House Wins!")
+    revealDealerCards() 
   } else if (handValue(dealerHand) > 21) {
-    console.log("House Busts! Player Wins!")
+    alert("House Busts! Player Wins!")
+    revealDealerCards()
   }
 }
 
 const checkForWinner = function() {
   revealDealerCards()
-  if (handValue(playerHand) > handValue(dealerHand)) {
-      alert("Player wins!") 
-  } else if (handValue(playerHand) < handValue(dealerHand)) {
+  if (handValue(playerHand) > handValue(dealerHand && handValue(playerHand) < 21)) {
+      alert("Player wins!")
+      revealDealerCards() 
+  } else if (handValue(playerHand) < handValue(dealerHand) && handValue(dealerHand) < 21) {
     alert("House wins!")
   } else if (handValue(playerHand) === handValue(dealerHand)) {
     alert("It's a push!")
@@ -118,34 +103,26 @@ const dealerTurn = function () {
     dealerHit()
     if (handValue(dealerHand) <= 16) {
       dealerHit()
-    } else if (handValue(dealerHand) >= 17) {
-      checkForWinner()
     }
-  } else if (handValue(dealerHand) >= 17) {
-    checkForWinner()
   }
+  checkForWinner()
 }
 
-stayButton.addEventListener('click', function() {
-  dealerTurn()
-})
-
 const revealDealerCards = function () {
-  const dealerCards = document.querySelectorAll('.dealerCards')
+  let dealerCards = document.querySelectorAll('.dealerCards')
   for (let i = 0; i < dealerHand.length; i++) {
-    console.log(dealerCards)
-  dealerCards[i].setAttribute('src', dealerHand[i].Image)
+    dealerCards[i].setAttribute('src', dealerHand[i].Image)
 }}
 
-const playGame = function () {
+const playGame = function() {
   dealButton.addEventListener('click', dealCardsToPlayers)
   hitButton.addEventListener('click', function() {
     let dealtCard = Math.floor(Math.random() * deck.length)
     let card = deck[dealtCard]
     playerHand.push(card)
     deck.splice(dealtCard, 1)
-    for (let i = 2; i < playerHand.length; i++) {
-      let faceUpCard = document.createElement()
+    for (let i = playerHand.length - 1; i < playerHand.length; i++) {
+      let faceUpCard = document.createElement('img')
       faceUpCard.setAttribute('src', playerHand[i - 1].Image)
       faceUpCard.setAttribute('class', 'playerCards')
       player.appendChild(faceUpCard)
@@ -155,7 +132,7 @@ const playGame = function () {
   })
   stayButton.addEventListener('click', function() {
     dealerTurn()
-  })
-
+  })  
 }
 buildDeck()
+playGame()
