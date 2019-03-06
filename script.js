@@ -9,6 +9,9 @@ const hitButton = document.querySelector('#hit')
 const stayButton = document.querySelector('#stay')
 const dealer = document.querySelector('#dealer')
 const player = document.querySelector('#player')
+const newHand = document.querySelector('#newHand')
+hitButton.disabled = true
+stayButton.disabled = true
 
 const buildDeck = function() {
     for(let i = 0; i < values.length; i++) {
@@ -41,6 +44,9 @@ const dealCardsToPlayers = function() {
       dealer.appendChild(faceDownCard)
       blackjack()
   }
+  dealButton.disabled = true
+  hitButton.disabled = false
+  stayButton.disabled = false
 }
 
  const handValue = function(hand) {
@@ -50,14 +56,18 @@ const dealCardsToPlayers = function() {
     }
     return total
   }
+
   
   const blackjack = function () {
     if (handValue(dealerHand) === 21) {
       alert("It's a push!")
+      revealDealerCards()
     } else if (handValue(playerHand) === 21) {
       alert("Blackjack! Player wins!")
+      revealDealerCards()
     } else if (handValue(dealerHand) === 21) {
       alert("Blackjack! House wins!")
+      revealDealerCards()
     }
   }
 
@@ -78,31 +88,56 @@ const dealerHit = function () {
 
 const bust = function() {
   if (handValue(playerHand) > 21) {
+    aceHighOrLow(playerHand)
+    hitButton.disabled = true
+    stayButton.disabled = true
     alert("Player Busts! House Wins!")
     revealDealerCards() 
   } else if (handValue(dealerHand) > 21) {
+    aceHighOrLow(dealerHand)
+    hitButton.disabled = true
+    stayButton.disabled = true
     alert("House Busts! Player Wins!")
     revealDealerCards()
   }
 }
 
 const checkForWinner = function() {
-  revealDealerCards()
-  if (handValue(playerHand) > handValue(dealerHand && handValue(playerHand) < 21)) {
+  if (handValue(playerHand) > handValue(dealerHand) && handValue(playerHand) < 21) {
+    aceHighOrLow(dealerHand)
+    aceHighOrLow(playerHand)
+      hitButton.disabled = true
+      stayButton.disabled = true
       alert("Player wins!")
       revealDealerCards() 
   } else if (handValue(playerHand) < handValue(dealerHand) && handValue(dealerHand) < 21) {
-    alert("House wins!")
+    aceHighOrLow(dealerHand)
+    aceHighOrLow(playerHand)
+      hitButton.disabled = true
+      stayButton.disabled = true
+      alert("House wins!")
+      revealDealerCards()
   } else if (handValue(playerHand) === handValue(dealerHand)) {
-    alert("It's a push!")
+    aceHighOrLow(dealerHand)
+    aceHighOrLow(playerHand)
+      hitButton.disabled = true
+      stayButton.disabled = true
+      alert("It's a push!")
+      revealDealerCards()
   }
 }
 
 const dealerTurn = function () {
+  aceHighOrLow(dealerHand)
+  hitButton.disabled = true
+  stayButton.disabled = true
   if (handValue(dealerHand) <= 16) {
     dealerHit()
     if (handValue(dealerHand) <= 16) {
       dealerHit()
+      if (handValue(dealerHand) <= 16) {
+        dealerHit()
+      } 
     }
   }
   checkForWinner()
@@ -136,3 +171,15 @@ const playGame = function() {
 }
 buildDeck()
 playGame()
+newHand.addEventListener('click', function() {
+  window.location.reload()
+}) 
+
+
+const aceHighOrLow = function(hand) {
+  for (let i = 0; i < hand.length; i++) {
+    if(handValue(hand) > 21 && hand[i].Name === "Ace") {
+      handValue(hand) -= 10
+    }
+  }
+}

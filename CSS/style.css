@@ -28,7 +28,7 @@ body {
 
 #hit {
     position: absolute;
-    top: 60%;
+    top: 75%;
     left: 35%;
     width: 100px;
     height: 100px;
@@ -36,9 +36,19 @@ body {
     background-image: url('Assets/hit_button.png');
 }
 
+#newHand {
+    position: absolute;
+    top: 55%;
+    left: 35%;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-image: url('Assets/new_hand.png');
+}
+
 #stay {
     position: absolute;
-    top: 80%;
+    top: 95%;
     left: 35%;
     width: 100px;
     height: 100px;
@@ -48,6 +58,7 @@ body {
 
 button {
     background-color: transparent;
+    border: none;
 }
 
 #dealer {
