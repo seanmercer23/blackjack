@@ -26,11 +26,31 @@ body {
     background-image: url(https://i.imgur.com/DZuDnLh.png);
 }
 
+#hit {
+    position: absolute;
+    top: 60%;
+    left: 35%;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-image: url('Assets/hit_button.png');
+}
+
+#stay {
+    position: absolute;
+    top: 80%;
+    left: 35%;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-image: url('Assets/stand.png');
+}
+
 button {
     background-color: transparent;
 }
 
-.dealer {
+#dealer {
     display: flex;
     position: absolute;
     align-items: center;
@@ -40,16 +60,37 @@ button {
     align-self: center;
 }
 
-.dealerCard1 {
+#dealerCard1 {
     position: absolute;
     padding: 0, 5px, 0, 5px;
     left: 85%;
     top: 5px;
 }
 
-.dealerCard2 {
+#dealerCard2 {
     position: absolute;
     left: 63%;
     top: 5px;
 }
 
+#player {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    bottom: 10%;
+    left: 50%;
+    width: 60%;
+    height: 65%;
+    align-self: center;
+}
+
+.playerCards {
+    height: 250px;
+    width: 176px;
+}
+
+.dealerCards {
+    height: 250px;
+    width: 176px;   
+}

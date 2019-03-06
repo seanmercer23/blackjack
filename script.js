@@ -4,6 +4,12 @@ const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
 const deck = []
 let playerHand = []
 let dealerHand = []
+const dealButton = document.body.querySelector("#deal")
+const hitButton = document.querySelector('#hit')
+const stayButton = document.querySelector('#stay')
+const dealer = document.querySelector('#dealer')
+const player = document.querySelector('#player')
+
 
 const buildDeck = function() {
     for(let i = 0; i < values.length; i++) {
@@ -15,28 +21,32 @@ const buildDeck = function() {
       }
 //Image addition syntax provided by https://codereview.stackexchange.com/questions/153251/single-player-repeatable-blackjack-game
 
-buildDeck()
-console.log(deck)
-
 const dealCardsToPlayers = function() {
   for (let i=0; i < 2; i++) {
       let dealtHand = Math.floor(Math.random() * deck.length)
       let card = deck[dealtHand]
       playerHand.push(card)
       deck.splice(dealtHand, 1)
+      let faceUpCard = document.createElement('img')
+      faceUpCard.setAttribute('src', playerHand[i].Image)
+      faceUpCard.setAttribute('class', 'playerCards')
+      player.appendChild(faceUpCard)
     
       let dealtHandTwo = Math.floor(Math.random() * deck.length)
       let cardTwo = deck[dealtHandTwo]
       dealerHand.push(cardTwo)
       deck.splice(dealtHandTwo, 1)
+      let faceDownCard = document.createElement('img')
+      faceDownCard.setAttribute('src', 'CSS/Assets/card_back_red.png')
+      faceDownCard.setAttribute('class', 'dealerCards')
+      dealer.appendChild(faceDownCard)
+      blackjack()
   }
+  console.log(playerHand)
+  console.log(dealerHand)
 }
 
-dealCardsToPlayers()
-
-// const dealButton = document.body.querySelector("#deal")
-// dealButton.addEventListener('click', dealCardsToPlayers)
-// console.log(playerHand)
+dealButton.addEventListener('click', dealCardsToPlayers)
 
  const handValue = function(hand) {
    let total = 0
@@ -55,25 +65,45 @@ dealCardsToPlayers()
       console.log("Blackjack! House wins!")
     }
   }
-  blackjack()
 
-const hitMe = function (hand) {
+const dealerHit = function () {
     let dealtCard = Math.floor(Math.random() * deck.length)
     let card = deck[dealtCard]
-    hand.push(card)
+    dealerHand.push(card)
     deck.splice(dealtCard, 1)
-    return hand
+    for (let i = dealerHand.length -1; i < dealerHand.length; i++) {
+      let faceDownCard = document.createElement('img')
+      faceDownCard.setAttribute('src', 'CSS/Assets/card_back_red.png')
+      faceDownCard.setAttribute('class', 'playerCards')
+      dealer.appendChild(faceDownCard)
+    }
 }
+
+hitButton.addEventListener('click', function() {
+  let dealtCard = Math.floor(Math.random() * deck.length)
+  let card = deck[dealtCard]
+  playerHand.push(card)
+  deck.splice(dealtCard, 1)
+  for (let i = playerHand.length - 1; i < playerHand.length; i++) {
+    let faceUpCard = document.createElement('img')
+    faceUpCard.setAttribute('src', playerHand[i - 1].Image)
+    faceUpCard.setAttribute('class', 'playerCards')
+    player.appendChild(faceUpCard)
+  }
+  blackjack()
+  bust()
+})
 
 const bust = function() {
   if (handValue(playerHand) > 21) {
-    console.log("House Busts! Player Wins!") 
+    console.log("Player Busts! House Wins!") 
   } else if (handValue(dealerHand) > 21) {
     console.log("House Busts! Player Wins!")
   }
 }
 
 const checkForWinner = function() {
+  revealDealerCards()
   if (handValue(playerHand) > handValue(dealerHand)) {
       alert("Player wins!") 
   } else if (handValue(playerHand) < handValue(dealerHand)) {
@@ -83,14 +113,49 @@ const checkForWinner = function() {
   }
 }
 
-const dealerLogic = function () {
+const dealerTurn = function () {
   if (handValue(dealerHand) <= 16) {
-    hitMe(dealerHand)
+    dealerHit()
+    if (handValue(dealerHand) <= 16) {
+      dealerHit()
+    } else if (handValue(dealerHand) >= 17) {
+      checkForWinner()
+    }
   } else if (handValue(dealerHand) >= 17) {
     checkForWinner()
   }
 }
 
-const stay = function() {
-  dealerLogic()
+stayButton.addEventListener('click', function() {
+  dealerTurn()
+})
+
+const revealDealerCards = function () {
+  const dealerCards = document.querySelectorAll('.dealerCards')
+  for (let i = 0; i < dealerHand.length; i++) {
+    console.log(dealerCards)
+  dealerCards[i].setAttribute('src', dealerHand[i].Image)
+}}
+
+const playGame = function () {
+  dealButton.addEventListener('click', dealCardsToPlayers)
+  hitButton.addEventListener('click', function() {
+    let dealtCard = Math.floor(Math.random() * deck.length)
+    let card = deck[dealtCard]
+    playerHand.push(card)
+    deck.splice(dealtCard, 1)
+    for (let i = 2; i < playerHand.length; i++) {
+      let faceUpCard = document.createElement()
+      faceUpCard.setAttribute('src', playerHand[i - 1].Image)
+      faceUpCard.setAttribute('class', 'playerCards')
+      player.appendChild(faceUpCard)
+    }
+    blackjack()
+    bust()
+  })
+  stayButton.addEventListener('click', function() {
+    dealerTurn()
+  })
+
 }
+buildDeck()
