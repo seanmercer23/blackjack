@@ -16,7 +16,7 @@ stayButton.disabled = true
 const buildDeck = function() {
     for(let i = 0; i < values.length; i++) {
       for (let j = 0; j < suits.length; j++) {
-          let card = {Name: names[i], Suit: suits[j], Value: values[i], Image: `/Users/Sean/ga/unit1/project1/blackjack/CSS/Assets/${names[i]}_of_${suits[j]}.png`}
+          let card = {Name: names[i], Suit: suits[j], Value: values[i], Image: `/./Assets/${names[i]}_of_${suits[j]}.png`}
             deck.push(card)
     }}
      return deck
