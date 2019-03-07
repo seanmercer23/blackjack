@@ -2,7 +2,6 @@ body {
     background: #ED213A; 
     background: -webkit-linear-gradient(to bottom, #93291E, #ED213A);  
     background: linear-gradient(to bottom, #93291E, #ED213A); 
-
 }
 
 .grid {
@@ -93,6 +92,10 @@ button {
 
 .spin {
     animation: spin 1s infinite linear;
+}
+
+audio {
+    display: none;
 }
 
 @keyframes spin {

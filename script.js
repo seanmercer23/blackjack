@@ -1,6 +1,6 @@
 const names = [2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king", "ace"]
 const suits = ["clubs", "diamonds", "hearts", "spades"]
-const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 13]
+const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
 const deck = []
 let playerHand = []
 let dealerHand = []
@@ -11,6 +11,9 @@ const dealer = document.querySelector('#dealer')
 const player = document.querySelector('#player')
 const newHand = document.querySelector('#newHand')
 const deckImage = document.querySelector('.deck')
+const hitMeSound = document.querySelector('#hitMeBaby')
+const standSound = document.querySelector('#standByMe')
+const spinSound = document.querySelector('#spinMe')
 hitButton.disabled = true
 stayButton.disabled = true
 
@@ -118,6 +121,7 @@ const hitMe = function() {
   playerAddCard()
   blackjack()
   bust()
+  hitMeBaby()
 }
 
 const dealerAddCard = function () {
@@ -197,12 +201,25 @@ const playGame = function() {
   dealButton.addEventListener('click', dealCards)
   hitButton.addEventListener('click', hitMe)
   stayButton.addEventListener('click', function() {
+    standByMe()
     dealerTurn()
   })  
 }
 
 const deckSpin = function() {
   deckImage.classList.toggle('spin')
+}
+
+const spinMe = function() {
+  return spinSound.pause ? spinSound.play() : spinSound.pause()
+}
+
+const hitMeBaby = function() {
+  hitMeSound.play()
+}
+
+const standByMe = function () {
+  standSound.play()
 }
 
 buildDeck()
