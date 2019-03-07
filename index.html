@@ -8,15 +8,19 @@
     <link rel="stylesheet" type="text/css" media="screen" href="CSS/style.css">
 </head>
 <body>
-    <div id="dealer"></div>
-    <div class="flex-container">
-            <img class="deck" src="CSS/Assets/card_back_red.png" alt= "deck of cards" />
-    </div>
-    <button id="deal"></button>
-    <button id="hit"></button>
-    <button id="stay"></button>
-    <button id="newHand"></button>
-    <div id="player"></div>
+    <div class="grid">
+            <div class="row1" id="dealer"></div>
+            <div class="row2">
+                    <img class="deck" src="CSS/Assets/card_back_red.png" alt= "deck of cards" />
+            </div>
+            <div class="buttons row3">
+                            <button class="control" id="deal"></button>
+                            <button class="control" id="hit"></button>
+                            <button class="control" id="stay"></button>
+                            <button class="control" id="newHand"></button>
+                        </div>
+            <div class="row4" id="player"></div>
+        </div>
     <script src="script.js"></script>
 </body>
 </html>

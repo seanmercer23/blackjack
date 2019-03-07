@@ -1,25 +1,20 @@
 body {
-    height: 1000px;
-    width: 800px;
+    background: #ED213A; 
+    background: -webkit-linear-gradient(to bottom, #93291E, #ED213A);  
+    background: linear-gradient(to bottom, #93291E, #ED213A); 
+
 }
 
-.deck {
-    position: absolute;
-    margin-left: 19%;
-}
-
-.flex-container {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-self: center;
-    align-items: center;
-    justify-content: center;
+.grid {
+   display: grid;
+   grid-template-rows: 1fr 1fr 1fr 1fr;
+   grid-template-columns: 1fr;
+   width: 800px;
+   height: 1000px;
+   margin: 0 auto;
 }
 
 #deal {
-    position: absolute;
-    margin: 40%, 19%;
     width: 100px;
     height: 100px;
     background-size: cover;
@@ -27,9 +22,6 @@ body {
 }
 
 #hit {
-    position: absolute;
-    top: 75%;
-    left: 35%;
     width: 100px;
     height: 100px;
     background-size: cover;
@@ -37,9 +29,6 @@ body {
 }
 
 #newHand {
-    position: absolute;
-    top: 55%;
-    left: 35%;
     width: 100px;
     height: 100px;
     background-size: cover;
@@ -47,9 +36,6 @@ body {
 }
 
 #stay {
-    position: absolute;
-    top: 95%;
-    left: 35%;
     width: 100px;
     height: 100px;
     background-size: cover;
@@ -61,47 +47,46 @@ button {
     border: none;
 }
 
-#dealer {
-    display: flex;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    width: 60%;
-    height: 65%;
-    align-self: center;
-}
-
-#dealerCard1 {
-    position: absolute;
-    padding: 0, 5px, 0, 5px;
-    left: 85%;
-    top: 5px;
-}
-
-#dealerCard2 {
-    position: absolute;
-    left: 63%;
-    top: 5px;
-}
-
-#player {
-    display: flex;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    bottom: 10%;
-    left: 50%;
-    width: 60%;
-    height: 65%;
-    align-self: center;
-}
-
 .playerCards {
     height: 250px;
     width: 176px;
+    border-radius: 7px;
 }
 
 .dealerCards {
     height: 250px;
-    width: 176px;   
+    width: 176px;
+    border-radius: 7px;   
+}
+
+.row1 {
+    grid-row: 1;
+    grid-column: 1;
+    margin: 0 auto;
+}
+
+.row2 {
+    grid-row: 2;
+    grid-column: 1;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+.row3 {
+    grid-row: 3;
+    grid-column: 1;
+    margin: 0 auto;
+    align-self: center;
+}
+
+.row4 {
+    grid-row: 4;
+    grid-column: 1;
+    margin: 0 auto;
+}
+
+.deck {
+    height: 250px;
+    width: 176px;
+    border-radius: 7px;
 }
