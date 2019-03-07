@@ -1,5 +1,5 @@
-const names = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"]
-const suits = ["Clubs", "Diamonds", "Hearts", "Spades"]
+const names = [2, 3, 4, 5, 6, 7, 8, 9, 10, "jack", "queen", "king", "ace"]
+const suits = ["clubs", "diamonds", "hearts", "spades"]
 const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 13]
 const deck = []
 let playerHand = []
@@ -16,7 +16,7 @@ stayButton.disabled = true
 const buildDeck = function() {
     for(let i = 0; i < values.length; i++) {
       for (let j = 0; j < suits.length; j++) {
-          let card = {Name: names[i], Suit: suits[j], Value: values[i], Image: `CSS/Assets/${names[i]}_of_${suits[j]}.png`}
+          let card = {Name: names[i], Suit: suits[j], Value: values[i], Image: `/Users/Sean/ga/unit1/project1/blackjack/CSS/Assets/${names[i]}_of_${suits[j]}.png`}
             deck.push(card)
     }}
      return deck
