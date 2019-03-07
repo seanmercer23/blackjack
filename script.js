@@ -210,10 +210,6 @@ const deckSpin = function() {
   deckImage.classList.toggle('spin')
 }
 
-const spinMe = function() {
-  return spinSound.pause ? spinSound.play() : spinSound.pause()
-}
-
 const hitMeBaby = function() {
   hitMeSound.play()
 }
