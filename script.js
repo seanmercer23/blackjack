@@ -10,6 +10,7 @@ const stayButton = document.querySelector('#stay')
 const dealer = document.querySelector('#dealer')
 const player = document.querySelector('#player')
 const newHand = document.querySelector('#newHand')
+const deckImage = document.querySelector('.deck')
 hitButton.disabled = true
 stayButton.disabled = true
 
@@ -199,8 +200,14 @@ const playGame = function() {
     dealerTurn()
   })  
 }
+
+const deckSpin = function() {
+  deckImage.classList.toggle('spin')
+}
+
 buildDeck()
 playGame()
 newHand.addEventListener('click', function() {
   window.location.reload()
-}) 
+})
+deckImage.addEventListener('click', deckSpin)
