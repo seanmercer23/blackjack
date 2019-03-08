@@ -2,6 +2,7 @@ body {
     background: #ED213A; 
     background: -webkit-linear-gradient(to bottom, #93291E, #ED213A);  
     background: linear-gradient(to bottom, #93291E, #ED213A); 
+    background-repeat: repeat;
 }
 
 .grid {
