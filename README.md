@@ -18,9 +18,9 @@
 
 ## Credits
 ### Card Face Images:
-<p>Vectorized Playing Cards 2.0 - http://sourceforge.net/projects/vector-cards/
-Copyright 2015 - Chris Aguilar - conjurenation@gmail.com
-Licensed under LGPL 3 - www.gnu.org/copyleft/lesser.html<p>
+<p>Vectorized Playing Cards 2.0 - http://sourceforge.net/projects/vector-cards/</p>
+<p>Copyright 2015 - Chris Aguilar - conjurenation@gmail.com</p>
+<p>Licensed under LGPL 3 - www.gnu.org/copyleft/lesser.html<p>
   
 ### Card Back Images:
 https://www.shutterstock.com/image-vector/playing-card-back-side-90984266?src=LY9u_qnfORXmpTqxVrNdaQ-7-94
