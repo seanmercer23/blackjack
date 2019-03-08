@@ -72,7 +72,7 @@ const toggleButtonsPostDeal = function() {
 const dealCards = function () {
   dealCardsToPlayer()
   dealCardsToDealer()
-  blackjack()
+  checkForBlackjack()
   toggleButtonsPostDeal()
 }
 
@@ -84,8 +84,8 @@ const dealCards = function () {
     return total
   }
   
-  const blackjack = function () {
-    if (handValue(dealerHand) === 21) {
+  const checkForBlackjack = function () {
+    if (handValue(dealerHand) === 21 && handValue(playerHand) === 21) {
       disableGameButtons()
       alert("It's a push!")
       revealDealerCards()
@@ -119,8 +119,8 @@ const renderPlayerHit = function() {
 
 const hitMe = function() {
   playerAddCard()
-  blackjack()
-  bust()
+  checkForBlackjack()
+  checkForBust()
   hitMeBaby()
 }
 
@@ -143,11 +143,11 @@ const renderDealerHit = function () {
 
 const dealerHit = function() {
   dealerAddCard()
-  blackjack()
-  bust()
+  checkForBlackjack()
+  checkForBust()
 }
 
-const bust = function() {
+const checkForBust = function() {
   if (handValue(playerHand) > 21) {
     disableGameButtons()
     alert("Player Busts! House Wins!")
@@ -208,6 +208,7 @@ const playGame = function() {
 
 const deckSpin = function() {
   deckImage.classList.toggle('spin')
+  setInterval(spinSound.play(), 5000)
 }
 
 const hitMeBaby = function() {
