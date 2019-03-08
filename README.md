@@ -12,9 +12,8 @@
 **[Play the game by clicking here!](https://seanmercer23.github.io/blackjack/)**
 
 ## Gameplay Images
-![Gamplay Image 1](https://i.imgur.com/MqZVjPH.png)
-![Gameplay Image 2](https://i.imgur.com/rR27Ag4.png)
 ![Mobile Gameplay Image](https://i.imgur.com/ciO2W9c.jpg?1)
+![Gameplay Image 2](https://i.imgur.com/rR27Ag4.png)
 
 ## Credits
 ### Card Face Images:
