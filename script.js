@@ -14,6 +14,9 @@ const deckImage = document.querySelector('.deck')
 const hitMeSound = document.querySelector('#hitMeBaby')
 const standSound = document.querySelector('#standByMe')
 const spinSound = document.querySelector('#spinMe')
+const playerCardsImages = document.querySelectorAll('.playerCards')
+const dealerCards = document.querySelectorAll('.dealerCards')
+const shakeSound = document.querySelector('#shakeSound')
 hitButton.disabled = true
 stayButton.disabled = true
 
@@ -208,7 +211,7 @@ const playGame = function() {
 
 const deckSpin = function() {
   deckImage.classList.toggle('spin')
-  setInterval(spinSound.play(), 5000)
+  spinSound.play()
 }
 
 const hitMeBaby = function() {
