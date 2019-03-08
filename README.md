@@ -15,6 +15,10 @@
 ![Mobile Gameplay Image](https://i.imgur.com/ciO2W9c.jpg?1)
 ![Gameplay Image 2](https://i.imgur.com/rR27Ag4.png)
 
+## Additional Information
+### Unsolved Problems:
+I was never able to find a way to have the value of Ace equate to either 1 or 11 depending on the hand value I could only manage a constant value.
+
 ## Credits
 ### Card Face Images:
 <p>Vectorized Playing Cards 2.0 - http://sourceforge.net/projects/vector-cards/</p>
