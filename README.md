@@ -14,7 +14,7 @@
 ## Gameplay Images
 ![Gamplay Image 1](https://i.imgur.com/MqZVjPH.png)
 ![Gameplay Image 2](https://i.imgur.com/rR27Ag4.png)
-![Mobile Gameplay Image](http://i.imgur.com/ciO2W9c.jpg)
+![Mobile Gameplay Image](https://i.imgur.com/ciO2W9c.jpg?1)
 
 ## Credits
 ### Card Face Images:
